@@ -1,0 +1,16 @@
+<html>
+    <head>
+<title>All Projects</title>
+    </head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+
+    <body>
+        <h2>All Ppojects</h2>
+        <br>
+        <div>  <a href="{%url 'add' %}"> Add Project </a> </div>
+        <br>
+        {% load django_tables2 %}
+        {% render_table table %}
+    </body>
+
+</html>
