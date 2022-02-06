@@ -4,7 +4,7 @@
         <br>
         <div>  <a href="{%url 'add' %}"> Add Project </a> </div>
         <br>
-        <table class="table">
+        <table id="table_db" class="table">
             <thead class="thead-dark">
                 <tr>
                     <th>Project ID</th>
@@ -55,3 +55,27 @@
             </tbody>
         </table>
     {% endblock content %}
+
+    {% block js %} 
+ 
+<script src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.24/js/dataTables.bootstrap4.min.js"></script>
+ 
+<script>
+    $(document).ready(function () {
+    $('#table_db').DataTable( {
+        "paging": true,
+        "searching": true,
+        "autoWidth": false,
+        "ordering": true,
+        "columnDefs": [
+            {"width": "50px", "targets": 0},
+            {"width": "250px", "targets": 1},
+        ],
+    }
+    );
+} );
+</script>
+ 
+{% endblock js %}
+
