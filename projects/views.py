@@ -1,8 +1,9 @@
 from multiprocessing import context
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from .models import project
 from .tables import ProjectTable
+from .forms import ProjectForm
 from django_tables2 import SingleTableView
 
 class PersonListView(SingleTableView):
@@ -16,8 +17,16 @@ def home(request):
     return render(request, 'projects/home.html', context)
 
 def add(request):
+    form = ProjectForm()
+    if request.method=="POST":
+        form = ProjectForm(request.post)
+        if form.is_valid():
+            form.save()
+            return redirect('home')
+        
     
-    return render(request, 'projects/add.html')
+    context={'form': form}
+    return render(request, 'projects/add.html', context)
 
 def view(request,id):
     proje = project.objects.get(id=id)

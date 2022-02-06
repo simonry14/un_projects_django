@@ -1,14 +1,18 @@
-<html>
-    <head></head>
-    <body>
+{% extends 'main.html' %}
+{% block content%}
         <p><b>Project ID:</b> {{proje.project_id}}</p>
         <p><b>Project Title: </b>{{proje.project_title}}</p>
         <p><b>Paas Code: </b>{{proje.paas_code}}</p>
         <p><b>Start Code: </b>{{proje.start_date}}</p>
         <p><b>End Code: </b>{{proje.end_date}}</p>
-        <p><b>Donor: </b>{{proje.end_date}}</p>
-        <p><b>Fund: </b>{{proje.end_date}}</p>
-        <p><b>Theme: </b>{{proje.end_date}}</p>
-        <p><b>Lead Org Unit:</b> {{proje.end_date}}</p>
-    </body>
-</html>
+        <p><b>Donor: </b>{{proje.donor}}</p>
+        <p><b>Fund: </b>{{proje.fund}}</p>
+        <p><b>Theme: </b>{{proje.theme}}</p>
+        <p><b>Lead Org Unit:</b> {{proje.lead_org_unit}}</p>
+        <p><b>Country:</b> {{proje.country}}</p>
+        <p><b>Total Expenditure:</b> {{proje.total_expenditure}}</p>
+        <p><b>Total Contribution:</b> {{proje.total_contribution}}</p>
+        <p><b>Difference:</b>{{proje.total_contribution}} - {{proje.total_contribution}}</p>
+        <p><b>Total PSC:</b> {{proje.total_psc}}</p>
+
+        {% endblock content %}
