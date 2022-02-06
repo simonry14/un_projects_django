@@ -1,3 +1,4 @@
+from multiprocessing import context
 from django.shortcuts import render
 from django.http import HttpResponse
 from .models import project
@@ -9,18 +10,19 @@ class PersonListView(SingleTableView):
     table_class = ProjectTable
     template_name = 'projects/home.html'
 
-#def home(request):
-#    projects = project.objects.all()
-#    context = {'projects', projects}
-#    return render(request, 'projects/home.html', context)
+def home(request):
+    projects = project.objects.all()
+    context = {'projects': projects}
+    return render(request, 'projects/home.html', context)
 
 def add(request):
     
     return render(request, 'projects/add.html')
 
-def view(request):
-    
-    return render(request, 'projects/view.html')
+def view(request,id):
+    proje = project.objects.get(id=id)
+    context = {'proje': proje}
+    return render(request, 'projects/view.html', context)
 
 
 def edit(request, id):

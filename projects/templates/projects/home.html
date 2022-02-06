@@ -9,8 +9,56 @@
         <br>
         <div>  <a href="{%url 'add' %}"> Add Project </a> </div>
         <br>
-        {% load django_tables2 %}
-        {% render_table table %}
+        <table class="table">
+            <thead class="thead-dark">
+                <tr>
+                    <th>Project ID</th>
+                    <th>Project Title</th>
+                    <th>PAAS Code</th>
+                    <th>Approval Status</th>
+                    <th>Fund</th>
+                    <th>PAG Value</th>
+                    <th>Start Date</th>
+                    <th>End Date</th>
+                    <th>Country</th>
+                    <th>Lead ORg Unit</th>
+                    <th>Theme</th>
+                    <th>Donor</th>
+                    <th>Total Expenditure</th>
+                    <th>Total Contribution</th>
+                    <th>Difference</th>
+                    <th>PSC Value</th>
+                    <th>Actions</th>
+                    <th></th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for project in projects %}
+    <tr><td>{{ project.project_id }}</td>
+        <td>{{ project.project_title }}</td>
+        <td>{{ project.paas_code }}</td>
+        <td>{{ project.approval_status }}</td>
+        <td>{{ project.fund }}</td>
+        <td>{{ project.pag_value }}</td>
+        <td>{{ project.start_date }}</td>
+        <td>{{ project.end_date }}</td>
+        <td>{{ project.country }}</td>
+        <td>{{ project.lead_org_unit }}</td>
+        <td>{{ project.theme }}</td>
+        <td>{{ project.donor }}</td>
+        <td>{{ project.total_expenditure }}</td>
+        <td>{{ project.total_contribution }}</td>
+        <td>{{ project.total_expenditure}} - {{ project.total_contribution}}</td>
+        <td>{{ project.total_psc }}</td>
+        <td><a href="/projects/view/{{project.id}}">view</a></td>
+        <td><a href="/edit/{{project.id}}">edit</a></td>
+        <td><a href="/delete/{{project.id}}">delete</a></td>
+    
+    </tr>
+{% endfor %}
+            </tbody>
+        </table>
     </body>
 
 </html>
