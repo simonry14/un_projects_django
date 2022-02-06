@@ -1,18 +1,18 @@
 {% extends 'main.html' %}
 {% block content%}
-        <p><b>Project ID:</b> {{proje.project_id}}</p>
-        <p><b>Project Title: </b>{{proje.project_title}}</p>
-        <p><b>Paas Code: </b>{{proje.paas_code}}</p>
-        <p><b>Start Code: </b>{{proje.start_date}}</p>
-        <p><b>End Code: </b>{{proje.end_date}}</p>
-        <p><b>Donor: </b>{{proje.donor}}</p>
-        <p><b>Fund: </b>{{proje.fund}}</p>
-        <p><b>Theme: </b>{{proje.theme}}</p>
-        <p><b>Lead Org Unit:</b> {{proje.lead_org_unit}}</p>
-        <p><b>Country:</b> {{proje.country}}</p>
-        <p><b>Total Expenditure:</b> {{proje.total_expenditure}}</p>
-        <p><b>Total Contribution:</b> {{proje.total_contribution}}</p>
-        <p><b>Difference:</b>{{proje.total_contribution}} - {{proje.total_contribution}}</p>
-        <p><b>Total PSC:</b> {{proje.total_psc}}</p>
+        <p><b>Project ID:</b> {{project.project_id}}</p>
+        <p><b>Project Title: </b>{{project.project_title}}</p>
+        <p><b>Paas Code: </b>{{project.paas_code}}</p>
+        <p><b>Start Code: </b>{{project.start_date}}</p>
+        <p><b>End Code: </b>{{project.end_date}}</p>
+        <p><b>Donor: </b>{{project.donor}}</p>
+        <p><b>Fund: </b>{{project.fund}}</p>
+        <p><b>Theme: </b>{{project.theme}}</p>
+        <p><b>Lead Org Unit:</b> {{project.lead_org_unit}}</p>
+        <p><b>Country:</b> {{project.country}}</p>
+        <p><b>Total Expenditure:</b> {{project.total_expenditure}}</p>
+        <p><b>Total Contribution:</b> {{project.total_contribution}}</p>
+        <p><b>Difference:</b>{{project.total_contribution}} - {{proje.total_contribution}}</p>
+        <p><b>Total PSC:</b> {{project.total_psc}}</p>
 
         {% endblock content %}
