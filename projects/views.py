@@ -43,6 +43,18 @@ def edit(request, id):
             form.save()
             return redirect('home')
     return render(request, 'projects/add.html', context)
+
+def delete(request, id):
+    obj = project.objects.get(id=id)
+    
+    if request.method == 'POST':
+        obj.delete()
+        return redirect('home')
+        
+    
+    return render(request, 'delete.html', {'project': obj})
+    
+    
     
 
 # Create your views here.
