@@ -1,0 +1,33 @@
+{% extends 'main.html' %}
+
+{% block content %}
+
+<style> 
+    .add-container{
+        padding-top: 10px;
+      padding-right: 30px;
+      padding-bottom: 50px;
+      padding-left: 50px;
+    
+    }
+    
+    </style>
+
+    <div class="add-container">
+
+<form method="POST">
+{% csrf_token%}
+
+<label>Username: </label>
+<input name= "username" type="text" placeholder=" Enter Username"/>
+
+<label>Password: </label>
+<input name= "password" type="password" placeholder=" Enter Password"/>
+
+<input type ="submit" value="Login"/>
+
+</form>
+
+</div>
+
+{% endblock content %}

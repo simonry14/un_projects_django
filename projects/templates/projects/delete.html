@@ -1,6 +1,18 @@
 {% extends 'main.html' %}
 
 {% block content %}
+<style> 
+    .add-container{
+        padding-top: 10px;
+      padding-right: 30px;
+      padding-bottom: 50px;
+      padding-left: 50px;
+    
+    }
+    
+    </style>
+
+    <div class="add-container">
 
 <form action="" method="POST">
     {% csrf_token %}
@@ -8,5 +20,5 @@
 <a href ='{{request.META.HTTP_REFERER}}'>Back</a>
 <input type = 'submit' value='Confirm' />
 </form>
-
+</div>
 {% endblock content%}

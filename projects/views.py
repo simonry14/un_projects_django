@@ -1,6 +1,8 @@
-from multiprocessing import context
 from django.shortcuts import render, redirect
+from django.contrib import messages
 from django.http import HttpResponse
+from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth.models import User
 from .models import project
 from .tables import ProjectTable
 from .forms import ProjectForm
@@ -10,6 +12,29 @@ class PersonListView(SingleTableView):
     model = project
     table_class = ProjectTable
     template_name = 'projects/home.html'
+    
+def loginPage(request):
+    if request.method == 'POST':
+        username = request.POST.get('username')
+        password = request.POST.get('password')
+        
+        try:
+            user = User.objects.get(username = username)
+            
+        except:
+            messages.error(request, 'User Doesnt Exist')
+            
+        user = authenticate(request, username=username, password=password)
+        
+        if user is not None:
+            login(request, user)
+            return render('projects/home.html')
+        else:
+             messages.error(request, 'Username OR Password Doesnt Exist')
+            
+        
+    context = {}
+    return render(request, 'projects/login_register.html', context)
 
 def home(request):
     projects = project.objects.all()
