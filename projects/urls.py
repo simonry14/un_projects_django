@@ -5,6 +5,8 @@ from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 
 urlpatterns = [
     path('login', views.loginPage, name="login"),
+    path('logout', views.logoutPage, name="logout"),
+    path('register', views.registerPage, name="register"),
     path('', views.home, name="home"),
     path('add/', views.add, name="add"),
     path('view/<str:id>/', views.view , name="view"),
