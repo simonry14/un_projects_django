@@ -1,5 +1,21 @@
 {% extends 'main.html' %}
 {% block content%}
+
+<style> 
+        .add-container{
+            padding-top: 20px;
+          padding-right: 30px;
+          padding-bottom: 50px;
+          padding-left: 50px;
+        
+        }
+        
+        </style>
+    
+        <div class="add-container">
+
+                <b> <h2>{{title}}</h2></b>
+
         <p><b>Project ID:</b> {{project.project_id}}</p>
         <p><b>Project Title: </b>{{project.project_title}}</p>
         <p><b>Paas Code: </b>{{project.paas_code}}</p>
@@ -16,3 +32,5 @@
         <p><b>Total PSC:</b> {{project.total_psc}}</p>
 
         {% endblock content %}
+
+        </div>

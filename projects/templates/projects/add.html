@@ -1,6 +1,20 @@
 {% extends 'main.html' %}
 {% block content%}
-<p>{{title}}</p>
+
+<style> 
+    .add-container{
+        padding-top: 10px;
+      padding-right: 30px;
+      padding-bottom: 50px;
+      padding-left: 50px;
+    
+    }
+    
+    </style>
+
+    <div class="add-container">
+
+        <b> <h2>{{title}}</h2></b>
 <div>
     <form action ="" method="POST">
        
@@ -10,6 +24,7 @@
         <input type ='submit' value='Submit'/>
     </form>
 
+</div>
 </div>
 
 {% endblock content %}

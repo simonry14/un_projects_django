@@ -29,7 +29,7 @@ def add(request):
 
 def view(request,id):
     proje = project.objects.get(id=id)
-    context = {'project': proje}
+    context = {'project': proje, 'title': 'View Project'}
     return render(request, 'projects/view.html', context)
 
 

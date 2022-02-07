@@ -1,5 +1,18 @@
 {% extends 'main.html' %}
 {% block content%}
+
+<style> 
+.home-container{
+    padding-top: 10px;
+  padding-right: 30px;
+  padding-bottom: 50px;
+  padding-left: 50px;
+
+}
+
+</style>
+
+<div class = "home-container">
         <h2>All Projects</h2>
         <br>
         <div>  <a href="{%url 'add' %}"> Add Project </a> </div>
@@ -54,8 +67,9 @@
 {% endfor %}
             </tbody>
         </table>
+    </div>
     {% endblock content %}
-
+   
     {% block js %} 
  
 <script src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.min.js"></script>
@@ -68,10 +82,10 @@
         "searching": true,
         "autoWidth": false,
         "ordering": true,
-        "columnDefs": [
-            {"width": "50px", "targets": 0},
-            {"width": "250px", "targets": 1},
-        ],
+       // "columnDefs": [
+       //     {"width": "50px", "targets": 0},
+       //     {"width": "250px", "targets": 1},
+       // ],
     }
     );
 } );
