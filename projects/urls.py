@@ -13,7 +13,8 @@ urlpatterns = [
     path('edit/<str:id>/', views.edit, name="edit"),
     path('delete/<str:id>/', views.delete, name="delete"),
     path('all/', views.all, name="all"),
-    path('country/<countr>', views.by_country, name="by_country")
+    path('country/<countr>', views.by_country, name="by_country"),
+    path('Approval Status/<statu>', views.by_status, name="by_approval")
 ]
 
 urlpatterns += staticfiles_urlpatterns()

@@ -5,7 +5,7 @@ from django.http import HttpResponse
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
-from .models import project, country
+from .models import project, country, approval_status
 from .tables import ProjectTable
 from .forms import ProjectForm
 from django_tables2 import SingleTableView
@@ -124,6 +124,14 @@ def all(request):
 def by_country(request, countr):
     country_id = country.objects.get(name = countr)
     projects = project.objects.filter(country__exact = country_id)
+    serializer = projectSerializer(projects, many=True)
+    return Response(serializer.data)
+
+@api_view(['GET'])
+@permission_classes((permissions.AllowAny,))    
+def by_status(request, statu):
+    status_id = approval_status.objects.get(name = statu)
+    projects = project.objects.filter(approval_status__exact = status_id)
     serializer = projectSerializer(projects, many=True)
     return Response(serializer.data)
     
