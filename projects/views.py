@@ -5,10 +5,15 @@ from django.http import HttpResponse
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
-from .models import project
+from .models import project, country
 from .tables import ProjectTable
 from .forms import ProjectForm
 from django_tables2 import SingleTableView
+from rest_framework.decorators import api_view
+from rest_framework.response import Response
+from .serializers import projectSerializer
+from rest_framework.decorators import api_view, permission_classes
+from rest_framework import permissions
 
 class PersonListView(SingleTableView):
     model = project
@@ -106,7 +111,21 @@ def delete(request, id):
     
     return render(request, 'delete.html', {'project': obj})
     
-    
+@api_view(['GET'])
+@permission_classes((permissions.AllowAny,))    
+def all(request):
+    projects = project.objects.all()
+    serializer = projectSerializer(projects, many=True)
+    return Response(serializer.data)
+
+
+@api_view(['GET'])
+@permission_classes((permissions.AllowAny,))    
+def by_country(request, countr):
+    country_id = country.objects.get(name = countr)
+    projects = project.objects.filter(country__exact = country_id)
+    serializer = projectSerializer(projects, many=True)
+    return Response(serializer.data)
     
 
 # Create your views here.

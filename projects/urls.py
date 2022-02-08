@@ -11,7 +11,9 @@ urlpatterns = [
     path('add/', views.add, name="add"),
     path('view/<str:id>/', views.view , name="view"),
     path('edit/<str:id>/', views.edit, name="edit"),
-     path('delete/<str:id>/', views.delete, name="delete")
+    path('delete/<str:id>/', views.delete, name="delete"),
+    path('all/', views.all, name="all"),
+    path('country/<countr>', views.by_country, name="by_country")
 ]
 
 urlpatterns += staticfiles_urlpatterns()
