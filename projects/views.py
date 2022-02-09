@@ -142,6 +142,12 @@ def add_project(request):
     if serializer.is_valid():
         serializer.save()
     return Response(serializer.data)
+
+@api_view(['DELETE'])
+def delete_project(request, id):
+    projet = project.objects.get(id=id)
+    projet.delete()
+    return Response()
     
 
 # Create your views here.
