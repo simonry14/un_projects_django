@@ -134,6 +134,14 @@ def by_status(request, statu):
     projects = project.objects.filter(approval_status__exact = status_id)
     serializer = projectSerializer(projects, many=True)
     return Response(serializer.data)
+
+@api_view(['POST'])
+@permission_classes((permissions.AllowAny,))    
+def add_project(request):
+    serializer = projectSerializer(data=request.data)
+    if serializer.is_valid():
+        serializer.save()
+    return Response(serializer.data)
     
 
 # Create your views here.
