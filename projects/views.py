@@ -8,6 +8,7 @@ from django.contrib.auth.models import User
 from .models import project, country, approval_status
 from .tables import ProjectTable
 from .forms import ProjectForm
+from django.db.models import Count
 from django_tables2 import SingleTableView
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
@@ -110,6 +111,17 @@ def delete(request, id):
         
     
     return render(request, 'delete.html', {'project': obj})
+
+def dashboard(request):
+    labelsC = dataC = []
+    projects = project.objects.annotate(num_country=Count("country"))
+    for pro in projects:
+        labelsC.append(pro.country.name)
+        dataC.append(pro.num_country)
+    
+    context = {'data': dataC, 'labels': labelsC}
+    return render(request, 'projects/dashboard.html', context)
+
     
 @api_view(['GET'])
 @permission_classes((permissions.AllowAny,))    
