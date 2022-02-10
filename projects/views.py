@@ -113,13 +113,15 @@ def delete(request, id):
     return render(request, 'delete.html', {'project': obj})
 
 def dashboard(request):
-    labelsC = dataC = []
-    projects = project.objects.annotate(num_country=Count("country"))
+    labelsC = dataC = labelsT = dataT =[]
+    projects = project.objects.annotate(num_country=Count("country"),num_theme=Count("theme"))
     for pro in projects:
         labelsC.append(pro.country.name)
         dataC.append(pro.num_country)
+        labelsT.append(pro.theme.name)
+        dataT.append(pro.num_theme)
     
-    context = {'data': dataC, 'labels': labelsC}
+    context = {'dataC': dataC, 'labelsC': labelsC,'dataT': dataT, 'labelsT': labelsT}
     return render(request, 'projects/dashboard.html', context)
 
     

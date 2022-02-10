@@ -28,13 +28,13 @@
         type: 'pie',
         data: {
           datasets: [{
-            data: {{ data|safe }},
+            data: {{ dataC|safe }},
             backgroundColor: [
-              '#d118188', '#ffe37f'
+              '#007bff', '#6610f2'
             ],
             label: 'Number'
           }],
-          labels: {{ labels|safe }}
+          labels: {{ labelsC|safe }}
         },
         options: {
           responsive: true
@@ -45,13 +45,13 @@
         type: 'pie',
         data: {
           datasets: [{
-            data: {{ data|safe }},
+            data: {{ dataT|safe }},
             backgroundColor: [
-              '#d118188', '#ffe37f'
+              '#e83e8c', '#dc3545'
             ],
             label: 'Number'
           }],
-          labels: {{ labels|safe }}
+          labels: {{ labelsT|safe }}
         },
         options: {
           responsive: true
@@ -62,13 +62,13 @@
         type: 'pie',
         data: {
           datasets: [{
-            data: {{ data|safe }},
+            data: {{ dataC|safe }},
             backgroundColor: [
               '#d118188', '#ffe37f'
             ],
             label: 'Number'
           }],
-          labels: {{ labels|safe }}
+          labels: {{ labelsC|safe }}
         },
         options: {
           responsive: true
