@@ -1,21 +1,18 @@
-{% extends 'main.html' %}
+{% extends 'base.html' %}
 {% block content%}
 
-<style> 
-    .add-container{
-        padding-top: 10px;
-      padding-right: 30px;
-      padding-bottom: 50px;
-      padding-left: 50px;
-    
-    }
-    
-    </style>
+<style>
+.container {
+    margin: auto;
+    width: 50%;
+    padding: 10px;
+}
+</style>
 
-    <div class="add-container">
+<div class="column container">
 
         <b> <h2>{{title}}</h2></b>
-<div>
+
     <form action ="" method="POST">
        
        {% csrf_token %}
@@ -24,7 +21,6 @@
         <input type ='submit' value='Submit'/>
     </form>
 
-</div>
 </div>
 
 {% endblock content %}

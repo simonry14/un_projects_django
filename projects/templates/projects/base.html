@@ -1,0 +1,86 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <!-- Include the Bulma CSS framework for styling -->
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
+      <!-- DataTables CSS -->
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.24/css/dataTables.bootstrap4.min.css"/>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+    <title>UNHCR</title>
+</head>
+<body>
+    <section class="hero is-small is-success mb-4">
+        <div class="hero-body">
+           <a href=" {% url 'dashboard' %}"> 
+               <h1 class="title is-1">UNHCR PROJECT MANAGEMENT SYSTEM</h1>
+            <p class="subtitle is-4">
+                
+            </p>
+        </a>
+        </div>
+
+    
+
+
+{% if messages %}
+<ul class="messages">
+    {% for message in messages %}
+    <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+    {% endfor %}
+</ul>
+{% endif %}
+
+
+        <nav class="level">
+            <p class="level-item has-text-centered">
+              <a href = "{% url 'home' %}" class="link is-info">Home</a>
+            </p>
+
+            <p class="level-item has-text-centered">
+                <a href="{%url 'add' %}" class="link is-info"> Add Project </a>
+              </p>
+            
+            <p class="level-item has-text-centered">
+            
+              <a href = "{% url 'home' %}">
+                {% load static %} <img src="{% static 'images/unhcr.png' %}" alt="Home!" width="300px" />
+            </a>
+            </p>
+
+            <p class="level-item has-text-centered">
+                <a href="http://127.0.0.1:8000/swagger/" class="link is-info" target="_blank">REST API</a>
+              </p>
+           
+            <p class="level-item has-text-centered">
+                {% if request.user.is_authenticated %}
+                <span>Hello {{request.user }}</span> &nbsp
+                <a href = "{% url 'logout'%}">Logout</a>
+                {% else %}
+                
+                <a href = "{% url 'login'%}">Login</a>
+                {% endif %}
+            </p>
+          </nav>
+    </section>
+
+    
+       
+        {% block content %}
+
+        {% endblock content %}
+
+        <!-- Jquery -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+ 
+<!-- Custom script -->
+{% block js %}
+ 
+{% endblock js %}
+      
+</body>
+</html>

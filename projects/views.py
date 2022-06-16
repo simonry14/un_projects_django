@@ -1,25 +1,18 @@
-import imp
 from django.shortcuts import render, redirect
 from django.contrib import messages
-from django.http import HttpResponse
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
+
 from .models import project, country, approval_status
-from .tables import ProjectTable
 from .forms import ProjectForm
 from django.db.models import Count
-from django_tables2 import SingleTableView
-from rest_framework.decorators import api_view
-from rest_framework.response import Response
+
 from .serializers import projectSerializer
+from rest_framework.response import Response
 from rest_framework.decorators import api_view, permission_classes
 from rest_framework import permissions
 
-class PersonListView(SingleTableView):
-    model = project
-    table_class = ProjectTable
-    template_name = 'projects/home.html'
     
 def loginPage(request):
     page = 'login'
@@ -44,7 +37,6 @@ def loginPage(request):
         
     context = {'page': page}
     return render(request, 'projects/login_register.html', context)
-
 
 def logoutPage(request):
     logout(request)
@@ -127,7 +119,7 @@ def dashboard(request):
     
 @api_view(['GET'])
 @permission_classes((permissions.AllowAny,))    
-def all(request):
+def get_all(request):
     projects = project.objects.all()
     serializer = projectSerializer(projects, many=True)
     return Response(serializer.data)
@@ -135,7 +127,7 @@ def all(request):
 
 @api_view(['GET'])
 @permission_classes((permissions.AllowAny,))    
-def by_country(request, countr):
+def get_by_country(request, countr):
     country_id = country.objects.get(name = countr)
     projects = project.objects.filter(country__exact = country_id)
     serializer = projectSerializer(projects, many=True)
@@ -143,7 +135,7 @@ def by_country(request, countr):
 
 @api_view(['GET'])
 @permission_classes((permissions.AllowAny,))    
-def by_status(request, statu):
+def get_by_status(request, statu):
     status_id = approval_status.objects.get(name = statu)
     projects = project.objects.filter(approval_status__exact = status_id)
     serializer = projectSerializer(projects, many=True)

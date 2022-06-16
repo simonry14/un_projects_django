@@ -1,47 +1,46 @@
-from tkinter import CASCADE
 from django.db import models
 
 # Create your models here.
 
 class paas_code(models.Model):
-    name = models.CharField(max_length=200)
+    name = models.CharField(max_length=201)
     def __str__(self):
         return self.name
 
 class approval_status(models.Model):
-    name = models.CharField(max_length=200)
+    name = models.CharField(max_length=201)
     def __str__(self):
         return self.name
     
 class country(models.Model):
-    name = models.CharField(max_length=200)
+    name = models.CharField(max_length=201)
     def __str__(self):
         return self.name
     
 class theme(models.Model):
-    name = models.CharField(max_length=200)
+    name = models.CharField(max_length=201)
     def __str__(self):
         return self.name
     
 class donor(models.Model):
-    name = models.CharField(max_length=200)
+    name = models.CharField(max_length=201)
     def __str__(self):
         return self.name
     
 class lead_org_unit(models.Model):
-    name = models.CharField(max_length=200)
+    name = models.CharField(max_length=201)
     def __str__(self):
         return self.name
     
 class fund(models.Model):
-    name = models.CharField(max_length=200)
+    name = models.CharField(max_length=201)
     def __str__(self):
         return self.name
     
 
 class project(models.Model):
     project_id = models.IntegerField()
-    project_title = models.CharField(max_length=200)
+    project_title = models.CharField(max_length=201)
     start_date = models.DateField()
     end_date = models.DateField()
     total_expenditure = models.IntegerField()
@@ -57,13 +56,6 @@ class project(models.Model):
     fund = models.ForeignKey(fund, on_delete=models.CASCADE,default=1)
     
     
-    def __str__(self):
+    def __str__(self) -> str :
         return str(self.project_id)
     
-
-
-import django_tables2 as tables
-
-class SimpleTable(tables.Table):
-    class Meta:
-        model = project

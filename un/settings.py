@@ -38,8 +38,9 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'projects.apps.ProjectsConfig',
-    'django_tables2',
     'rest_framework',
+   'drf_yasg',
+
 ]
 
 MIDDLEWARE = [
@@ -78,11 +79,22 @@ WSGI_APPLICATION = 'un.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
+#DATABASES = {
+#    'default': {
+#        'ENGINE': 'django.db.backends.sqlite3',
+#        'NAME': BASE_DIR / 'db.sqlite3',
+#    }
+#}
+
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
+'default': {
+'ENGINE': 'django.db.backends.postgresql_psycopg2',
+'NAME': 'un_projects',
+'USER' : 'postgres',
+'PASSWORD' : 'postgres',
+'HOST' : 'localhost',
+'PORT' : '5432',
+}
 }
 
 

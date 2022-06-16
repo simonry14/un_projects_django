@@ -6,3 +6,4 @@ class ProjectForm(ModelForm):
         model = project
         fields = '__all__'
         
+        
